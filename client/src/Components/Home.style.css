@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.center-container{
+    width: 75%;
+    height: 100%; 
+    border: 0.1rem solid #fff;
+
+}
+#Heading{
+    font-family: "Ubuntu";
+    border-bottom: 0.1rem dashed #0fff87;
+    border-radius: 2rem;
+    font-size: 3.5rem;
+    color: #0fff87;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    box-shadow: 0 0rem 0.8rem #0fff8749;
+    
+}
+.instructions{
+    margin-top: 1rem;
+    padding: 2rem;
+    background-color: #201e1e;
+    border-radius: 1rem;
+    box-shadow: 0 0rem 0.8rem #4f4d4d5d;
+
+}
+#Sub-Heading{
+    color: aliceblue; 
+    font-size: 2rem;
+    background-color: rgba(214, 224, 231, 0.137);
+    border-bottom: 0.1rem solid #fff;
+    padding: 1rem;
+}
+.instructions ul{
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    column-gap: 0.5rem;
+    color: #fffb1d;
+    padding: 2rem;
+    font-family: "Arial Narrow";
+    letter-spacing: 0.1rem;
+    font-size: 1.2rem;
+    list-style: circle;
+    row-gap: 2rem;
+    
+}
+.center-container button{
+    float: right;
+    font-family: "Ubuntu";
+    padding: 0.7rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    margin: 1rem;
+    /* background-color: royalblue; */
+    color: #fff;
+    background-color: transparent;
+    border: 0.1px solid #fff;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+.center-container button:hover{
+    background-color: royalblue;
+    border-color: transparent;
+}
