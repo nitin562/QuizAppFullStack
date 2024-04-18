@@ -28,7 +28,7 @@ Start the Backend server and port is 8000 so make sure no other application is r
 ```bash
   npm start
 ```
-
+open new terminal and 
 Go to Client directory
 ```bash
   cd QuizAppFullStack/Client
@@ -44,5 +44,10 @@ Run the App
 npm run dev
 ```
 
+## Evalution of Score
+Each correct answer gives 1 marks.
 
+Each wrong answer gives 0 mark.
 
+Each violation of rule reduce score by 1.
+### Hence total marks is (correct-violation)*100/10
