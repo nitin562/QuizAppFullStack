@@ -111,7 +111,7 @@ export default function QuizPage() {
   return (
     <div
       ref={fullScreenRef}
-      className='w-full h-full flex justify-center items-center bg-black/60 before:contents-[""] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:z-[-10]  before:bg-[url("./images/Bg2.avif")] before:bg-no-repeat before:bg-center before:bg-cover'
+      className='w-full h-full flex justify-center items-center bg-black/60 before:contents-[""] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:z-[-10]  before:bg-[url("./Bg2.avif")] before:bg-no-repeat before:bg-center before:bg-cover'
     >
       {Data && (
         <div className="w-full md:w-3/4 h-full flex items-center flex-col gap-y-4 p-4 overflow-y-auto scrollbar">
