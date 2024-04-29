@@ -62,7 +62,7 @@ export default function Result() {
     FetchAnswers()//fetch answers
   },[])
   return (
-    <div className='w-full h-full flex justify-center items-center bg-black/50 before:contents-[""] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:z-[-10]  before:bg-[url("./images/ResultBg.png")] before:bg-no-repeat before:bg-center before:bg-cover p-2 '>
+    <div className='w-full h-full flex justify-center items-center bg-black/50 before:contents-[""] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:z-[-10]  before:bg-[url("/ResultBg.png")] before:bg-no-repeat before:bg-center before:bg-cover p-2 '>
       {/* Quiz Result container */}
       <div className="w-full md:w-3/4 h-full backdrop-blur-lg backdrop-brightness-50 scrollbar p-2 md:p-4">
         <p className='font-["Ubuntu"] text-center my-8 text-7xl text-teal-400 drop-shadow-[0_0_0.2rem_currentColor]'>
