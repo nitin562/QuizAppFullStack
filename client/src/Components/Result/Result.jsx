@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import links from "../../../apikey";
 
 export default function Result() {
   // following states will store the value of correctness, incorrectness, violation,marks score.
@@ -9,7 +10,7 @@ export default function Result() {
   const [Marks, setMarks] = useState(0)
   const nav=useNavigate() //navigator
   const FetchAnswers=async()=>{ //fetch an array of answers from server
-    const url="http://localhost:8000/api/quiz/Answer"
+    const url=links.AnsLink
     const response=await fetch(url)
     const result=await response.json()
     if(result.success){

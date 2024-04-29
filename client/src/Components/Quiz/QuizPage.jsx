@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import QuizOption from "./QuizOption";
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
+import links from "../../../apikey";
 
 export default function QuizPage() {
   const nav = useNavigate(); //navigator
@@ -13,7 +14,7 @@ export default function QuizPage() {
   const [Data, setData] = useState(null); // Current Data Quesition and options
   const FetchQuestion = async () => {
     //Fetch the Question according to Qno from backend
-    const url = `http://localhost:8000/api/quiz/Ques?Qno=${Qno}`;
+    const url = `${links.QuesLink}?Qno=${Qno}`;
     const response = await fetch(url);
     const result = await response.json();
     if (result.success) {
