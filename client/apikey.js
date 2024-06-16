@@ -1,5 +1,7 @@
+const base="https://quizappfullstack.onrender.com/"
+// const base="http://localhost:8000/"
 const links={
-    QuesLink:"https://quizappfullstack.onrender.com/api/quiz/Ques",
-    AnsLink:"https://quizappfullstack.onrender.com/api/quiz/Answer"
+    QuesLink:`${base}api/quiz/Ques`,
+    AnsLink:`${base}api/quiz/Answer` 
 }
 export default links

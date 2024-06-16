@@ -89,7 +89,7 @@ export default function Result() {
             <p className="text-5xl drop-shadow-[0_0_0.3rem_currentColor] text-red-300">
               {InCorrect}%
             </p>
-            <p className="text-xl font-thin text-white">Incorrectness</p>
+            <p className="text-xl font-thin text-white text-center ">Incorrectness and Unanswered</p>
             <p className="text-white flex items-center text-md my-2">
               Marking:
               <span className="text-xl mx-3 drop-shadow-[0_0_0.4rem_#fff]">

@@ -3,8 +3,11 @@ import QuizOption from "./QuizOption";
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
 import links from "../../../apikey";
+import Timer from "../Timer";
 
 export default function QuizPage() {
+  const [minute, setminute] = useState(Number(localStorage.getItem("minute"))||10)
+  const [second, setsecond] = useState(Number(localStorage.getItem("second"))||0)
   const nav = useNavigate(); //navigator
   const [selected, setselected] = useState(5); //option selection state,intial value is 5 that no choosen currently
   const [violated, setviolated] = useState(false); //if user change tabs
@@ -12,6 +15,7 @@ export default function QuizPage() {
   const [Qno, setQno] = useState(Number(localStorage.getItem("current")) || 1); //Question Number
   const fullScreenRef = useRef(); //Reference of ultimate parent of page
   const [Data, setData] = useState(null); // Current Data Quesition and options
+  const exitCode = useRef(null);
   const FetchQuestion = async () => {
     //Fetch the Question according to Qno from backend
     const url = `${links.QuesLink}?Qno=${Qno}`;
@@ -26,6 +30,7 @@ export default function QuizPage() {
         //if no data is there
         return;
       }
+      
       //set existed data like selection, violation in states
       setselected(Math.abs(savedData[Qno - 1])); //if it is negative
       setviolated(savedData[Qno - 1] < 0);
@@ -34,7 +39,7 @@ export default function QuizPage() {
 
   const HandleNext = () => {
     //Next Question
-    if (Qno === 10) {
+    if (Qno === 10 || (minute==0&&second==0)) {
       //After last Question
       localStorage.setItem("Completed", true); //denotes you have completed the quiz
       nav("/result");
@@ -101,6 +106,7 @@ export default function QuizPage() {
   useEffect(() => {
     //adding fullscreenChange event - call every time when full screen mode is change by user
     document.addEventListener("fullscreenchange", changeScreenState);
+
     //adding changing tab event called blur- invoked every time the page become unfocused
     window.addEventListener("blur", HandleToggleViolation);
     return () => {
@@ -108,11 +114,44 @@ export default function QuizPage() {
       window.removeEventListener("blur", HandleToggleViolation);
     };
   }, []);
+  useEffect(() => {
+     exitCode.current = setInterval(() => {
+      setsecond((prevSecond) => {
+        if (prevSecond === 0) {
+          setminute((prevMinute) => {
+            if (prevMinute === 0) {
+              clearInterval(exitCode.current);
+              return 0;
+            }
+            return prevMinute - 1;
+          });
+          return 59;
+        }
+        return prevSecond - 1;
+      });
+    }, 1000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(exitCode.current);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("minute",minute)
+    localStorage.setItem("second",second)
+
+    if (minute === 0 && second === 0) {
+      
+      clearInterval(exitCode.current);
+      alert("Time is Over")
+      HandleNext()
+    }
+  }, [minute, second]);
   return (
     <div
       ref={fullScreenRef}
       className='w-full h-full flex justify-center items-center bg-black/60 before:contents-[""] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:z-[-10]  before:bg-[url("/Bg2.avif")] before:bg-no-repeat before:bg-center before:bg-cover'
     >
+      {/* Timer */}
+      <Timer min={minute} sec={second}/>
       {Data && (
         <div className="w-full md:w-3/4 h-full flex items-center flex-col gap-y-4 p-4 overflow-y-auto scrollbar">
           {/* Question */}
